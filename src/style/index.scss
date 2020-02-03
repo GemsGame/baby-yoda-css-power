@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald&display=swap'); 
+$sectionColor :#655af3;
+$rowColor:#655af3;
+$startButtonColor:#1ada70;
+$startButtonColorhover:#17eb76;
+$textColor:white;
+$mainFont: 'Oswald', sans-serif;
+
+
+body {
+    margin:0;
+    font-family: $mainFont;
+}
+
+.spells {
+    
+    position: absolute;
+    z-index: 1;
+    bottom:5%;
+    left:5%;
+    border: 1px solid $textColor;
+    border-radius: 4px;
+    box-shadow: 0 4px 25px 0 rgba(0,0,0,.1);
+    min-width:300px;
+    display:none;
+    
+}
+.menu {
+    width: 30%;
+    height:30%;
+    position: absolute;
+    background-color: $sectionColor;
+    z-index: 1;
+    top:25%;
+    left:35%;
+    border: 1px solid $sectionColor;
+    border-radius: 4px;
+    box-shadow: 0 4px 25px 0 rgba(0,0,0,.1);
+    min-width: 200px;
+}
+canvas {
+    display:block;
+    background: url("../../src/assets/background/tatuin-1.jpg") no-repeat 50%;
+    background-size: cover;
+}
+
+.grid {
+    display:grid; 
+    grid-gap: 15px;
+    padding:15px;
+}
+
+.columns-3 {
+    grid-template-columns: 0.30fr 0.30fr 0.30fr;
+    grid-template-rows: minmax(200px,1fr);
+    justify-content: space-evenly;
+   
+}
+
+.columns-1 {
+    grid-template-columns: 1fr;
+    grid-template-rows:1fr;
+    justify-content: space-evenly;
+    text-align: center; 
+    margin-top: 12%;
+  
+}
+.row {
+    border:1px solid $rowColor;
+    border-radius: 4px;
+    background-color:$rowColor;
+    box-shadow: 0 0px 4px 0 rgba(255, 255, 255, 0.7);
+}
+
+.row:hover {
+    box-shadow: 0 0px 4px 0 rgba(255, 255, 255, 1);  
+}
+.button {
+    height: 40px;
+    min-width: 150px;
+    border-radius: 4px;
+    border:0px;
+    box-shadow: 0 4px 25px 0 rgba(0,0,0,.1);
+    font-family: inherit;
+}
+.button:hover {
+    background-color:$startButtonColorhover;
+}
+.start-game {
+    width: 70%;
+    background-color: $startButtonColor;
+    color:$textColor;
+    text-transform: uppercase;
+    font-size:15px;
+}
+
+.input {
+    height: 40px;
+    min-width: 150px;
+    border-radius: 4px;
+    border:0px;
+    box-shadow: 0 4px 25px 0 rgba(0,0,0,.1);
+    font-family: inherit;
+}
+
+.user-name {
+    width: 70%;
+    text-transform: uppercase;
+    font-size:15px;
+    text-align: center;
+}
+
+.magic {
+    grid-template-columns: repeat(auto-fill, 64px);
+    grid-template-rows:minmax(64px,1fr);
+    justify-content: space-evenly;
+    text-align: center;
+    background-color: $textColor;
+}
+
+.spell {
+    border: 1px solid $sectionColor;
+    border-radius: 4px;
+    box-shadow: 0 4px 25px 0 rgba(0,0,0,.1);
+}
+
+.spell:hover {
+    border: 2px solid $textColor;
+    border-radius: 6px;
+    box-shadow: 0 4px 25px 0 rgba(0,0,0,.1);
+    cursor: pointer;
+}
+.power {
+    background: url("../../src/assets/sprites/icons8-mana-64.png") no-repeat;
+    background-color:$rowColor;
+    background-size: cover;
+}
+
+.yoda {
+    background: url("../../src/assets/sprites/icons8-scary-hand-50.png") no-repeat;
+    background-color:$rowColor;
+    background-size: cover;
+}
+
+.lightsaber {
+    background: url("../../src/assets/sprites/icons8-fantasy-64.png") no-repeat;
+    background-color:$rowColor;
+    background-size: cover;
+}
+
+.tea {
+    background: url("../../src/assets/sprites/icons8-love-potion-64.png") no-repeat;
+    background-color:$rowColor;
+    background-size: cover;
+}
+
+.droid {
+    background: url("../../src/assets/sprites/icons8-voice-id-100.png") no-repeat;
+    background-color:$rowColor;
+    background-size: cover;
+}
+
+.hp {
+display:none;
+}
+.player {
+    position: absolute;
+    
+    height:20px;
+
+    top:2%;
+    left:5%;
+    border-radius: 4px;
+}
+.monster {
+    position: absolute;
+  
+    height:20px;
+  
+    top:2%;
+    right:5%;
+    border-radius: 4px;
+}
+
+.name {
+    color:$textColor;
+    font-size:16px;
+}
+
+.questions {
+    padding:15px;
+    width: 40%;
+    height:40%;
+    position: absolute;
+    background-color: $textColor;
+    z-index: 1;
+    top:20%;
+    left:55%;
+    border: 1px solid $sectionColor;
+    border-radius: 4px;
+    box-shadow: 0 4px 25px 0 rgba(0,0,0,.1);
+    min-width: 300px;
+ display:none;
+}
