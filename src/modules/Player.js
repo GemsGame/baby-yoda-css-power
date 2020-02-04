@@ -2,7 +2,7 @@ class Player {
     constructor() {
         this._name = 'name';
         this._health = 100;
-        this._damage = 5;
+        this._activeMagic = "";
     }
     get name() {
         return this._name;
@@ -16,12 +16,14 @@ class Player {
     set health(value) {
         this._health = value;
     }
-    get damage() {
-        return this._damage;
+
+    get activeMagic() {
+        return this._activeMagic;
     }
-    set damage(value) {
-        this._damage = value;
+    set activeMagic(value) {
+        this._activeMagic = value;
     }
+
 }
 
 

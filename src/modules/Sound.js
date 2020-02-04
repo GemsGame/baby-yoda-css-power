@@ -1,15 +1,19 @@
 class Sound { 
     constructor() {
-    this._tea = '';
-     
+
+    this._music = '';
+  
     }
-    set tea (value) {
-        this._tea = value; 
+
+
+    set music (value) {
+        this._music = value; 
     }
     
-    get tea () {
-        return this._tea;
+    get music () {
+        return this._music;
     }
+
 }
 
 

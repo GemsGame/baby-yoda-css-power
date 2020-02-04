@@ -9,13 +9,16 @@ class View {
         this.canvas.width = window.innerWidth;
         this.ctx = this.canvas.getContext('2d');
 
- 
+
         this.mainMusic = new Audio();
         this.playerLayer = new Image();
         this.monsterImg = new Image();
         this.magicPoisonImg = new Image();
         this.teaImg = new Image();
         this.teaSound = new Audio();
+        this.eatSound = new Audio();
+        this.flaskSound = new Audio();
+        this.attackSound = new Audio();
         this.playerY = window.innerHeight - 500;
         this.playerX = 50;
         this.playerTick = 0;
@@ -35,7 +38,7 @@ class View {
                 let menu = document.querySelector(".menu");
                 if (menu) {
                     menu.remove();
-                    this.setMonster(view.animation.player);
+                
                 }
                 let hpPlayer = view.player.health * 3;
                 let hpMonster = view.monster.health * 3;
@@ -51,37 +54,56 @@ class View {
                 document.querySelector(".player .name p").innerHTML = view.player.name;
                 document.querySelector(".monster .name p").style = 'border:0px; margin:5px; text-align:center; color:white;';
                 document.querySelector(".monster .name p").innerHTML = view.monster.name;
-             
+
             }
 
         }
-            this.setPlayer(view.animation.monster);
-            this.settea(view.animation.tea);
-        
-            console.log(view);
-            if(view.sound.tea === "play") {
-                this.teaSound.play();
-            }
+        this.setPlayer(view.animation.player);
+        this.setMonster(view.animation.monster);
+        this.settea(view.animation.tea);
+        this.mainMusic.play();
+        console.log(view);
 
-            if(view.questions.qNumber > 0) {
-                document.querySelector(".questions").style.display = "block";
-                document.querySelector(".questions h3").innerHTML = questions[0].вопрос;
+        if (view.sound.music === "heal") {
+            this.teaSound.play();
+        }
+        if (view.sound.music === "eat") {
+            this.eatSound.play();
+        }
 
-            for(let i = 0; i < questions[0].ответ.length; i++) {
-                //document.querySelector(".questions p").innerHTML = `<input type="radio">${questions[0].ответ[i]}`;
+        if (view.sound.music === "flask") {
+            this.flaskSound.play();
+        }
+        if (view.sound.music === "attack") {
+            this.attackSound.play();
+        }
+        if (view.questions.open === true && view.questions.qNumber < questions.length) {
+            document.querySelector(".questions div").innerHTML = "";
+            document.querySelector(".questions h3").innerHTML = "";
+
+            document.querySelector(".questions").style.display = "grid";
+            document.querySelector(".questions h3").innerHTML = questions[view.questions.qNumber].вопрос;
+
+            for (let i = 0; i < questions[view.questions.qNumber].ответ.length; i++) {
                 let input = document.createElement("input");
                 input.setAttribute("type", "radio");
-             
+                input.setAttribute("name", "answ");
+                input.setAttribute("value", questions[view.questions.qNumber].ответ[i][0]);
+                input.setAttribute("id", i);
+
                 let q = document.querySelector(".questions div");
                 q.append(input);
-
-                let p = document.createElement("div");
-                let text = document.createTextNode(questions[0].ответ[i]);
-                //p.innerHTML = questions[0].ответ[i];
+                let text = document.createTextNode(questions[view.questions.qNumber].ответ[i][0]);
                 input.after(text);
             }
-           
-            }
+
+        } else {
+            console.log("game over");
+        }
+
+        if(view.questions.open === false) {
+            document.querySelector(".questions").style.display = "none";
+        }
     }
 
     preload() {
@@ -91,15 +113,18 @@ class View {
         this.magicPoisonImg.src = "./src/assets/sprites/geizer.png";
         this.teaImg.src = "./src/assets/sprites/heal.png";
         this.teaSound.src = "./src/assets/sounds/heal.mp3";
+        this.eatSound.src = "./src/assets/sounds/eat.mp3";
+        this.flaskSound.src = "./src/assets/sounds/mana.mp3";
+        this.attackSound.src = "./src/assets/sounds/attack.mp3";
     }
-     
+
     settea(value) {
-     
+
         this.tea = new Sprite(
             {
                 ctx: this.ctx,
-                image:  this.teaImg,
-                width:960,
+                image: this.teaImg,
+                width: 960,
                 height: 1152,
                 rowsNumber: 5,
                 columnsNumber: 7,
@@ -107,11 +132,11 @@ class View {
                 positionY: 80,
                 positionX: 140,
                 animation: value
-               
+
             }
         );
-  
- 
+
+
 
     }
 
@@ -121,7 +146,7 @@ class View {
             {
                 ctx: this.ctx,
                 image: this.playerLayer,
-                width:1680,
+                width: 1680,
                 height: 420,
                 rowsNumber: 4,
                 columnsNumber: 1,
@@ -129,7 +154,7 @@ class View {
                 positionY: 250,
                 positionX: 20,
                 animation: value
-               
+
             }
         );
 
@@ -156,9 +181,7 @@ class View {
     }
 
 
-    playMusicMain() {
-        this.mainMusic.play();
-    }
+
 
 }
 
