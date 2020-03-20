@@ -38,6 +38,22 @@ body {
     box-shadow: 0 4px 25px 0 rgba(0,0,0,.1);
     min-width: 200px;
 }
+
+.end {
+    width: 30%;
+    height:30%;
+    position: absolute;
+    background-color: $sectionColor;
+    z-index: 1;
+    top:25%;
+    left:35%;
+    border: 1px solid $sectionColor;
+    border-radius: 4px;
+    box-shadow: 0 4px 25px 0 rgba(0,0,0,.1);
+    min-width: 200px;
+    display:none;
+    color:$textColor;
+}
 canvas {
     display:block;
     background: url("../../src/assets/background/tatuin-1.jpg") no-repeat 50%;

@@ -35,11 +35,8 @@ class View {
 
         if (view.game) {
             if (view.game.gameStatus === true) {
-                let menu = document.querySelector(".menu");
-                if (menu) {
-                    menu.remove();
-                
-                }
+      
+                document.querySelector(".menu").style.display = 'none';
                 let hpPlayer = view.player.health * 3;
                 let hpMonster = view.monster.health * 3;
                 document.querySelector(".spells").style.display = "block";
@@ -55,14 +52,25 @@ class View {
                 document.querySelector(".monster .name p").style = 'border:0px; margin:5px; text-align:center; color:white;';
                 document.querySelector(".monster .name p").innerHTML = view.monster.name;
 
+                this.setPlayer(view.animation.player);
+                this.setMonster(view.animation.monster);
+                this.settea(view.animation.tea);
+                this.mainMusic.play();
             }
+            if (view.game.gameStatus === false) {
+                document.querySelector(".spells").style.display = "none";
+                document.querySelector(".hp").style.display = "none";
+                this.mainMusic.pause();
+                this.setPlayer('not display');
+                this.setMonster('not display');
+                document.querySelector(".end").style.display = 'block';
+                
+            }
+          
 
         }
-        this.setPlayer(view.animation.player);
-        this.setMonster(view.animation.monster);
-        this.settea(view.animation.tea);
-        this.mainMusic.play();
-        console.log(view);
+      
+         console.log(view);
 
         if (view.sound.music === "heal") {
             this.teaSound.play();
@@ -97,9 +105,7 @@ class View {
                 input.after(text);
             }
 
-        } else {
-            console.log("game over");
-        }
+        } 
 
         if(view.questions.open === false) {
             document.querySelector(".questions").style.display = "none";

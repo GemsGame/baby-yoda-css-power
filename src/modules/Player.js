@@ -4,6 +4,7 @@ class Player {
         this._health = 100;
         this._activeMagic = "";
     }
+
     get name() {
         return this._name;
     }
