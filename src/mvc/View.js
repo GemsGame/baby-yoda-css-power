@@ -57,6 +57,7 @@ class View {
                 this.settea(view.animation.tea);
                 this.mainMusic.play();
             }
+            
             if (view.game.gameStatus === false) {
                 document.querySelector(".spells").style.display = "none";
                 document.querySelector(".hp").style.display = "none";

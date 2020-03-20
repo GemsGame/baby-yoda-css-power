@@ -115,7 +115,7 @@ class Controller {
         window.document.addEventListener("input", (e) => {
             if (e.target.id === "name") {
                 this.model.player.name = e.target.value;
-                this.view.update(this.model);
+                
             }
             if (e.target.name === "answ") {
                 this.model.questions.idAnswer = e.target.id;
